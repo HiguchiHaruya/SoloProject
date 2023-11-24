@@ -2973,8 +2973,8 @@ MonoBehaviour:
   _spownpos: {x: -3.6, y: 0.5, z: -35}
   _spownpos2: {x: -5, y: 0.5, z: -35}
   _spownpos3: {x: -1, y: 0.5, z: -35}
-  _speed: 500
-  _deletetime: 3.8
+  _speed: 600
+  _deletetime: 5
 --- !u!4 &1410981802 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: 8f7380da49034cd488ddff94b1ac35d1, type: 3}
@@ -4329,15 +4329,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 485130, guid: 80b13c60d92cd934faf0c33b73ff7cbe, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.15
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 485130, guid: 80b13c60d92cd934faf0c33b73ff7cbe, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.15
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 485130, guid: 80b13c60d92cd934faf0c33b73ff7cbe, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.15
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 485130, guid: 80b13c60d92cd934faf0c33b73ff7cbe, type: 3}
       propertyPath: m_LocalPosition.x
