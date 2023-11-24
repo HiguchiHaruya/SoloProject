@@ -33,7 +33,6 @@ public class Playercontroller : MonoBehaviour
 
     void Update()
     {
-       // this.gameObject.transform.Rotate(Vector3.right * _scroll);
         float horizon = -Input.GetAxis("Horizontal");
         Vector3 movement = new Vector3(horizon, 0, 0);
         GetComponent<Rigidbody>().velocity = movement * _moveSpeed;
