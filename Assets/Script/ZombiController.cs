@@ -14,11 +14,9 @@ public class ZombiController : MonoBehaviour
     Rigidbody _rb = default;
     bool _spown = false;
     GameObject _zombiclone = default;
-    //Animator _anim;
     public float _deletetime = 5;
     void Start()
     {
-        // _anim = GetComponent<Animator>();
         InvokeRepeating("Call", 0.5f, 0.5f);
         if (_rb == null) _rb = GetComponent<Rigidbody>();
     }
