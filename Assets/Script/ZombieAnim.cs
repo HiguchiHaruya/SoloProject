@@ -31,7 +31,7 @@ public class ZombieAnim : MonoBehaviour
             particle = Instantiate(m_ParticleSystem,
                 other.ClosestPointOnBounds(transform.position), Quaternion.identity);
             particle.Play();
-            Destroy(particle, 2);
+            Destroy(particle,1);
             _anim.SetTrigger("Down");
         }
     }

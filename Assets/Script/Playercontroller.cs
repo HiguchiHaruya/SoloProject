@@ -11,7 +11,6 @@ public class Playercontroller : MonoBehaviour
     [SerializeField] UnityEvent ZombieEveParticle;
     [SerializeField] Image _image, _image1, _image2, _image2a, _image3, _image3a, _image4, _image4a;
     [SerializeField] Material _newMaterial;
-    float _scroll = 15f;
     /// <summary>横移動のスピード</summary>
     [SerializeField] float _moveSpeed = 3f;
     /// <summary>コンボスコア</summary>
@@ -29,6 +28,7 @@ public class Playercontroller : MonoBehaviour
         _image3a.enabled = false;
         _image4.enabled = false;
         _image4a.enabled = false;
+        InvokeRepeating("ChangeSpeed", 0, 1);
     }
 
     void Update()
@@ -38,10 +38,30 @@ public class Playercontroller : MonoBehaviour
         GetComponent<Rigidbody>().velocity = movement * _moveSpeed;
 
     }
+    public float ChangeSpeed()
+    {
+        if (_combo > 40 && _combo < 60)
+        {
+            Debug.Log("スピード40");
+            return 40;
+        }
+        if (_combo > 60 && _combo < 100)
+        {
+            Debug.Log("スピード80");
+            return 80;
+        }
+        if (_combo > 100)
+        {
+            Debug.Log("スピード160");
+            return 160;
+        }
+        return 10;
+    }
     private void LateUpdate()
     {
         if (_combo > 40)
         {
+
             _image2.enabled = true;
             _image2a.enabled = true;
         }

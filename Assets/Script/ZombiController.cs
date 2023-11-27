@@ -14,13 +14,14 @@ public class ZombiController : MonoBehaviour
     Rigidbody _rb = default;
     bool _spown = false;
     GameObject _zombiclone = default;
-    public float _deletetime = 5;
+    public float _deletetime;
     void Start()
     {
         InvokeRepeating("Call", 0.5f, 0.5f);
         if (_rb == null) _rb = GetComponent<Rigidbody>();
     }
 
+    [Obsolete]
     void Update()
     {
         _rb.AddForce(Vector3.fwd * _speed);
