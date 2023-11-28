@@ -10,7 +10,7 @@ public class ZombiController : MonoBehaviour
     [SerializeField] Vector3 _spownpos;
     [SerializeField] Vector3 _spownpos2;
     [SerializeField] Vector3 _spownpos3;
-    [SerializeField] float _speed = 200f;
+    [SerializeField] float _speed;
     Rigidbody _rb = default;
     bool _spown = false;
     GameObject _zombiclone = default;

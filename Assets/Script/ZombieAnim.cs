@@ -7,10 +7,10 @@ using static UnityEngine.ParticleSystem;
 
 public class ZombieAnim : MonoBehaviour
 {
+    public float _destroytime;
     [SerializeField] ParticleSystem m_ParticleSystem;
-    ZombiController controller = new ZombiController();
     Animator _anim;
-    ParticleSystem particle;
+    ParticleSystem particleClone = default;
     void Start()
     {
         _anim = GetComponent<Animator>();
@@ -28,15 +28,12 @@ public class ZombieAnim : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            particle = Instantiate(m_ParticleSystem,
+            particleClone = Instantiate(m_ParticleSystem,
                 other.ClosestPointOnBounds(transform.position), Quaternion.identity);
-            particle.Play();
-            Destroy(particle,1);
+            particleClone.Play();
+            float particleDuration = particleClone.main.duration; //パーティクルの再生時間を取得
+            Destroy(particleClone,particleDuration);
             _anim.SetTrigger("Down");
         }
-    }
-    private void OnCollisionEnter(Collision collision)
-    {
-
     }
 }

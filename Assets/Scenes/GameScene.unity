@@ -5133,7 +5133,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 471726728}
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -13.555035, y: -1.7894261, z: 44.00814}
+  m_LocalPosition: {x: -13.15, y: 3.46, z: 4.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5170,6 +5170,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27e383d046321a548852f3d9aa19caab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _destroytime: 0
   m_ParticleSystem: {fileID: 471726730}
 --- !u!1001 &508428779
 PrefabInstance:
@@ -6532,6 +6533,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27e383d046321a548852f3d9aa19caab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _destroytime: 0
   m_ParticleSystem: {fileID: 471726730}
 --- !u!1001 &836300939
 PrefabInstance:
@@ -6692,6 +6694,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27e383d046321a548852f3d9aa19caab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _destroytime: 0
   m_ParticleSystem: {fileID: 471726730}
 --- !u!1 &963194225
 GameObject:
@@ -6807,6 +6810,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27e383d046321a548852f3d9aa19caab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _destroytime: 0
   m_ParticleSystem: {fileID: 471726730}
 --- !u!1 &1093733933
 GameObject:
@@ -6854,6 +6858,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af35ed951e572ac42af4451606fef28d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _rotateSpeed: 3
 --- !u!54 &1093733936
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -7838,8 +7843,8 @@ MonoBehaviour:
   _spownpos: {x: -3.6, y: 0.5, z: -35}
   _spownpos2: {x: -5, y: 0.5, z: -35}
   _spownpos3: {x: -1, y: 0.5, z: -35}
-  _speed: 300
-  _deletetime: 4.5
+  _speed: 250
+  _deletetime: 3.5
 --- !u!4 &1410981802 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: 8f7380da49034cd488ddff94b1ac35d1, type: 3}
@@ -7886,6 +7891,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27e383d046321a548852f3d9aa19caab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _destroytime: 0.5
   m_ParticleSystem: {fileID: 471726730}
 --- !u!1 &1411191255
 GameObject:
@@ -8427,8 +8433,8 @@ MonoBehaviour:
   _image4: {fileID: 1837112145}
   _image4a: {fileID: 424977224}
   _newMaterial: {fileID: 0}
-  _moveSpeed: 3
   _comboTxt: {fileID: 1270016862}
+  _moveSpeed: 3
   _border: 50
 --- !u!1 &1779750603 stripped
 GameObject:
@@ -8460,6 +8466,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27e383d046321a548852f3d9aa19caab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _destroytime: 0
   m_ParticleSystem: {fileID: 471726730}
 --- !u!1 &1818668741
 GameObject:
@@ -8670,6 +8677,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27e383d046321a548852f3d9aa19caab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _destroytime: 0
   m_ParticleSystem: {fileID: 471726730}
 --- !u!1 &1852741342
 GameObject:
@@ -9044,6 +9052,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27e383d046321a548852f3d9aa19caab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _destroytime: 0
   m_ParticleSystem: {fileID: 471726730}
 --- !u!1 &1979045746
 GameObject:
@@ -9370,8 +9379,8 @@ MonoBehaviour:
   _image4: {fileID: 1837112145}
   _image4a: {fileID: 424977224}
   _newMaterial: {fileID: 2100000, guid: 7262eb7467bd5cf48b56f2aa94d56ce2, type: 2}
-  _moveSpeed: 3
   _comboTxt: {fileID: 1270016862}
+  _moveSpeed: 3
   _border: 50
 --- !u!65 &2042646417
 BoxCollider:
@@ -9517,4 +9526,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27e383d046321a548852f3d9aa19caab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _destroytime: 0
   m_ParticleSystem: {fileID: 471726730}
