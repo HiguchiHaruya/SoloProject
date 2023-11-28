@@ -36,4 +36,11 @@ public class ZombieAnim : MonoBehaviour
             _anim.SetTrigger("Down");
         }
     }
+    private void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.CompareTag("Destroy"))
+        {
+            Destroy(gameObject);
+        }
+    }
 }

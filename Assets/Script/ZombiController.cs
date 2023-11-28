@@ -39,7 +39,6 @@ public class ZombiController : MonoBehaviour
         {
             _zombiclone = Instantiate(_zombiPrefab, _pos, Quaternion.identity);//引数で貰ったVector3座標にスポーン。回転は無し。
             _spown = true;
-            Destroy(_zombiclone, _deletetime);
         }
     }
 

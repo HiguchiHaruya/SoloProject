@@ -5,6 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class Rotate : MonoBehaviour
 {
+    [SerializeField] AudioSource _speedup;
     Playercontroller _playerContr;
     [HideInInspector] public int _rotateSpeed = 3;
     void Start()
@@ -13,17 +14,20 @@ public class Rotate : MonoBehaviour
     }
     public int ChangeSpeed(int combo)
     {
-        if (combo > 10)
+        if (combo > 15 && combo < 30)
         {
+            _speedup.Play();
             return 5;
         }
-        if (combo > 20)
+        if (combo > 30 && combo < 50)
         {
-            return 8;
-        }
-        if (combo > 25)
-        {
+            _speedup.Play();
             return 15;
+        }
+        if (combo > 50)
+        {
+            _speedup.Play();
+            return 25;
         }
         return 3;
     }
