@@ -33,7 +33,7 @@ public class GameManager : MonoBehaviour
     }
     void Start()
     {
-        //GameStart();
+        
     }
     void Update()
     {

@@ -36,7 +36,7 @@ public class Rotate : MonoBehaviour
         if (_playerContr != null)
         {
             Debug.Log(_playerContr._combo);
-            gameObject.transform.Rotate(Vector3.down * ChangeSpeed(_playerContr._combo));
+            gameObject.transform.Rotate(Vector3.up * ChangeSpeed(_playerContr._combo));
             float horizon = -Input.GetAxis("Horizontal");
             Vector3 movement = new Vector3(horizon, 0, 0);
             GetComponent<Rigidbody>().velocity = movement * 2;

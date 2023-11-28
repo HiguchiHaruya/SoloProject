@@ -7,12 +7,14 @@ using static UnityEngine.ParticleSystem;
 
 public class ZombieAnim : MonoBehaviour
 {
+    Rigidbody rb;
     public float _destroytime;
     [SerializeField] ParticleSystem m_ParticleSystem;
     Animator _anim;
     ParticleSystem particleClone = default;
     void Start()
     {
+        rb = GetComponent<Rigidbody>();
         _anim = GetComponent<Animator>();
     }
 
@@ -32,7 +34,7 @@ public class ZombieAnim : MonoBehaviour
                 other.ClosestPointOnBounds(transform.position), Quaternion.identity);
             particleClone.Play();
             float particleDuration = particleClone.main.duration; //パーティクルの再生時間を取得
-            Destroy(particleClone,particleDuration);
+            Destroy(particleClone, particleDuration);
             _anim.SetTrigger("Down");
         }
     }

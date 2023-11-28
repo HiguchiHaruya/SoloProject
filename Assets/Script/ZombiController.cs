@@ -13,8 +13,6 @@ public class ZombiController : MonoBehaviour
     [SerializeField] float _speed;
     Rigidbody _rb = default;
     bool _spown = false;
-    GameObject _zombiclone = default;
-    public float _deletetime;
     void Start()
     {
         InvokeRepeating("Call", 0.5f, 0.5f);
@@ -37,9 +35,8 @@ public class ZombiController : MonoBehaviour
     {
         if (!_spown)
         {
-            _zombiclone = Instantiate(_zombiPrefab, _pos, Quaternion.identity);//引数で貰ったVector3座標にスポーン。回転は無し。
+            GameObject _zombiclone = Instantiate(_zombiPrefab, _pos, Quaternion.identity);//引数で貰ったVector3座標にスポーン。回転は無し。
             _spown = true;
         }
     }
-
 }
