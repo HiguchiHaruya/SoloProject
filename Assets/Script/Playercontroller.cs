@@ -18,7 +18,7 @@ public class Playercontroller : MonoBehaviour
     [HideInInspector] public int _combo = 0;
     /// <summary>コンボを反映するテキスト</summary>
     public int _border = 50;
-    void Start()
+    private void Awake()
     {
         _image.enabled = false;
         _image1.enabled = false;
@@ -28,6 +28,10 @@ public class Playercontroller : MonoBehaviour
         _image3a.enabled = false;
         _image4.enabled = false;
         _image4a.enabled = false;
+    }
+    void Start()
+    {
+
     }
 
     void Update()
@@ -59,7 +63,6 @@ public class Playercontroller : MonoBehaviour
     {
         if (other.CompareTag("Zombie"))
         {
-
             _image.enabled = true; _image1.enabled = true;
             _combo++;
             ZombieEveSound.Invoke();

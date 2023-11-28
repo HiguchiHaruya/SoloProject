@@ -5,13 +5,13 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class Rotate : MonoBehaviour
 {
-    Playercontroller controller = new Playercontroller();
+    Playercontroller _playerContr;
     [HideInInspector] public int _rotateSpeed = 3;
     void Start()
     {
-
+        _playerContr = FindObjectOfType<Playercontroller>();
     }
-   public int ChangeSpeed(int combo)
+    public int ChangeSpeed(int combo)
     {
         if (combo > 10)
         {
@@ -29,10 +29,14 @@ public class Rotate : MonoBehaviour
     }
     public void Update()
     {
-        Debug.Log(controller._combo);
-        this.gameObject.transform.Rotate(Vector3.down * ChangeSpeed(controller._combo));
-        float horizon = -Input.GetAxis("Horizontal");
-        Vector3 movement = new Vector3(horizon, 0, 0);
-        GetComponent<Rigidbody>().velocity = movement * 2;
+        if (_playerContr != null)
+        {
+            Debug.Log(_playerContr._combo);
+            gameObject.transform.Rotate(Vector3.down * ChangeSpeed(_playerContr._combo));
+            float horizon = -Input.GetAxis("Horizontal");
+            Vector3 movement = new Vector3(horizon, 0, 0);
+            GetComponent<Rigidbody>().velocity = movement * 2;
+        }
+        else if (_playerContr == null) Debug.Log("Null‚Å‚·");
     }
 }
