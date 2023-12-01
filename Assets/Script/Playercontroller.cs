@@ -61,7 +61,7 @@ public class Playercontroller : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Zombie"))
+        if (other.CompareTag("Zombie") || other.CompareTag("Child")) 
         {
             _image.enabled = true; _image1.enabled = true;
             _combo++;

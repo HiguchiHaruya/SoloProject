@@ -17,7 +17,7 @@ public class Rotate : MonoBehaviour
         if (combo > 15 && combo < 30)
         {
             _speedup.Play();
-            return 5;
+            return 10;
         }
         if (combo > 30 && combo < 50)
         {
@@ -29,7 +29,7 @@ public class Rotate : MonoBehaviour
             _speedup.Play();
             return 25;
         }
-        return 3;
+        return 5;
     }
     public void Update()
     {
