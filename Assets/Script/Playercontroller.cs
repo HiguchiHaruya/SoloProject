@@ -6,6 +6,7 @@ using UnityEngine.Events;
 using UnityEngine.UI;
 public class Playercontroller : MonoBehaviour
 {
+    ImageManager _im;
     /// <summary>ƒ]ƒ“ƒr‚ðŽE‚µ‚½Žž‚ÌƒCƒxƒ“ƒg</summary>
     [SerializeField] UnityEvent ZombieEveSound;
     [SerializeField] UnityEvent ZombieEveParticle;
@@ -28,10 +29,11 @@ public class Playercontroller : MonoBehaviour
         _image3a.enabled = false;
         _image4.enabled = false;
         _image4a.enabled = false;
+
     }
     void Start()
     {
-
+        _im = FindObjectOfType<ImageManager>();
     }
 
     void Update()
@@ -43,27 +45,12 @@ public class Playercontroller : MonoBehaviour
 
     private void LateUpdate()
     {
-        if (_combo > 10)
-        {
-            _image2.enabled = true;
-            _image2a.enabled = true;
-        }
-        if (_combo > 20)
-        {
-            _image3.enabled = true;
-            _image3a.enabled = true;
-        }
-        if (_combo > 25)
-        {
-            _image4.enabled = true;
-            _image4a.enabled = true;
-        }
+        _im.DestroyImage(_combo);
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Zombie") || other.CompareTag("Child")) 
+        if (other.CompareTag("Zombie") || other.CompareTag("Child"))
         {
-            _image.enabled = true; _image1.enabled = true;
             _combo++;
             ZombieEveSound.Invoke();
             _comboTxt.text = string.Format("{0:0000}", _combo + "Combo!!!");

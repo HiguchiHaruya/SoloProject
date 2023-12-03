@@ -29,7 +29,6 @@ public class ZombieAnim : MonoBehaviour
             float particleDuration = particleClone.main.duration; //パーティクルの再生時間を取得
             Destroy(particleClone, particleDuration);
             if (tag == "Zombie") _anim.SetTrigger("Down");
-            if (tag == "Child") _anim.SetTrigger("Child");
         }
     }
     private void OnCollisionEnter(Collision other)
