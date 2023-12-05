@@ -17,17 +17,17 @@ public class Rotate : MonoBehaviour
         if (combo > 15 && combo < 30)
         {
             _speedup.Play();
-            return 5;
+            return 10;
         }
         if (combo > 30 && combo < 50)
         {
             _speedup.Play();
-            return 7;
+            return 15;
         }
         if (combo > 50)
         {
             _speedup.Play();
-            return 10;
+            return 20;
         }
         return 3;
     }

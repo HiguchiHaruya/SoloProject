@@ -1992,7 +1992,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!199 &471726729
 ParticleSystemRenderer:
   serializedVersion: 6
@@ -20384,7 +20384,7 @@ MonoBehaviour:
   _spownpos: {x: -3.6, y: 0.5, z: -35}
   _spownpos2: {x: -5, y: 0.5, z: -35}
   _spownpos3: {x: -1, y: 0.5, z: -35}
-  _speed: 250
+  _speed: 270
 --- !u!4 &1410981802 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: 8f7380da49034cd488ddff94b1ac35d1, type: 3}
