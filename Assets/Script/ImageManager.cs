@@ -21,15 +21,13 @@ public class ImageManager : MonoBehaviour
         int _border = 15;
         if (_combo > _max)
         {
+            StartCoroutine(Fadeout());
             _thisImage.enabled = true;
-            Debug.Log("ボーダー超えました");
             _max += _border;
-            Fadeout();
-
         }
 
     }
-    void Fadeout()
+    IEnumerator Fadeout()
     {
         float _fadeoutTime = 2.0f;
         float currentTime = 0.0f;
@@ -39,6 +37,7 @@ public class ImageManager : MonoBehaviour
             _thisImage.color = new Color(_color.r, _color.g, _color.b, alpha);
             currentTime += _fadeoutTime;
         }
+        yield return null;
         _thisImage.enabled = false;
     }
     void Update()

@@ -50,7 +50,7 @@ public class GameManager : MonoBehaviour
         if (_gamestart)
         {
             float _offsetY = Time.time * _scrollspeed;
-            _rend.material.SetTextureOffset("_MainTex", new Vector2(_offsetY, 0));
+            _rend.material.SetTextureOffset("_MainTex", new Vector2(0, _offsetY));
         }
     }
     IEnumerator Main()
