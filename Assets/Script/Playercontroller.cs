@@ -33,19 +33,19 @@ public class Playercontroller : MonoBehaviour
     }
     void Start()
     {
-        _im = FindObjectOfType<ImageManager>();
+
     }
 
     void Update()
     {
-        float horizon = -Input.GetAxis("Horizontal");
-        Vector3 movement = new Vector3(horizon, 0, 0);
-        GetComponent<Rigidbody>().velocity = movement * _moveSpeed;
+        //float horizon = -Input.GetAxis("Horizontal");
+        //Vector3 movement = new Vector3(horizon, 0, 0);
+        //GetComponent<Rigidbody>().velocity = movement * _moveSpeed;
     }
 
     private void LateUpdate()
     {
-        _im.DestroyImage(_combo);
+       // _im.DestroyImage(_combo);
     }
     private void OnTriggerEnter(Collider other)
     {

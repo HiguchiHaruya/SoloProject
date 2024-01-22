@@ -17,30 +17,29 @@ public class Rotate : MonoBehaviour
         if (combo > 15 && combo < 30)
         {
             _speedup.Play();
-            return 15;
+            return 25;
         }
         if (combo > 30 && combo < 50)
         {
             _speedup.Play();
-            return 17;
+            return 30;
         }
         if (combo > 50)
         {
             _speedup.Play();
-            return 20;
+            return 35;
         }
-        return 13;
+        return 20;
     }
     public void Update()
     {
         //if (_playerContr != null)
         //{
-            //Debug.Log(_playerContr._combo);
-            gameObject.transform.Rotate(Vector3.up * 14);
-            float horizon = -Input.GetAxis("Horizontal");
-            Vector3 movement = new Vector3(horizon, 0, 0);
-            GetComponent<Rigidbody>().velocity = movement * 2;
+        //Debug.Log(_playerContr._combo);
+        gameObject.transform.Rotate(Vector3.up, 20);
+        float horizon = -Input.GetAxis("Horizontal");
+        Vector3 movement = new Vector3(horizon, 0, 0);
+        GetComponent<Rigidbody>().velocity = movement * 3;
         //}
-         if (_playerContr == null) Debug.Log("Null‚Å‚·");
     }
 }

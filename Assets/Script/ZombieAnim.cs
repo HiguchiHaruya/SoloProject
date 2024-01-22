@@ -23,11 +23,11 @@ public class ZombieAnim : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            particleClone = Instantiate(m_ParticleSystem,
-                other.ClosestPointOnBounds(transform.position), Quaternion.identity);
-            particleClone.Play();
-            float particleDuration = particleClone.main.duration; //パーティクルの再生時間を取得
-            Destroy(particleClone, particleDuration);
+            //particleClone = Instantiate(m_ParticleSystem,
+            //    other.ClosestPointOnBounds(transform.position), Quaternion.identity);
+            //particleClone.Play();
+            //float particleDuration = particleClone.main.duration; //パーティクルの再生時間を取得
+            //Destroy(particleClone, particleDuration);
             if (tag == "Zombie") _anim.SetTrigger("Down");
         }
     }
