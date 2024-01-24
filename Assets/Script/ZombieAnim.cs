@@ -7,17 +7,25 @@ using static UnityEngine.ParticleSystem;
 
 public class ZombieAnim : MonoBehaviour
 {
+    private float _speed = 650f;
     public float _destroytime;
     [SerializeField] ParticleSystem m_ParticleSystem;
     Animator _anim;
     ParticleSystem particleClone = default;
+    bool isDestroyed = false;
+    Rigidbody _rb;
     void Start()
     {
+        _rb = GetComponent<Rigidbody>();
         _anim = GetComponent<Animator>();
     }
     public void SetTrigger()
     {
         _anim.SetTrigger("Idle");
+    }
+    private void Update()
+    {
+        _rb.AddForce(Vector3.fwd * _speed);
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -28,14 +36,13 @@ public class ZombieAnim : MonoBehaviour
             //particleClone.Play();
             //float particleDuration = particleClone.main.duration; //パーティクルの再生時間を取得
             //Destroy(particleClone, particleDuration);
-            if (tag == "Zombie") _anim.SetTrigger("Down");
+            StartCoroutine(ZombieDestroy());
         }
     }
-    private void OnCollisionEnter(Collision other)
+    IEnumerator ZombieDestroy()
     {
-        if (other.gameObject.CompareTag("Destroy"))
-        {
-            Destroy(gameObject);
-        }
+        _anim.SetTrigger("Down");
+        yield return new WaitForSeconds(1.5f);
+        Destroy(this);
     }
 }

@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
 {
     bool _gamestart = false;
     float _waitTime = 1.0f;
-    float _gameTime = 5;
+    float _gameTime = 60;
     float _currentTime = 0;
     [SerializeField] Text _timerTxt;
     /// <summary> 床のスクロールスピード</summary>
@@ -34,14 +34,10 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
-    void Start()
-    {
-
-    }
     void Update()
     {
         if (_currentTime <= _gameTime) _currentTime += Time.deltaTime;
-        _timerTxt.text = string.Format("{0:0}", (int)_currentTime + "秒経過！！");
+        _timerTxt.text = string.Format("{0:0}", (int)_currentTime + "秒経過...");
         float _offsetY = Time.time * _scrollspeed;
         _rend.material.SetTextureOffset("_MainTex", new Vector2(0, _offsetY));
         if (_currentTime >= _gameTime) StartCoroutine(Load());

@@ -10,7 +10,6 @@ public class Rotate : MonoBehaviour
     [HideInInspector] public int _rotateSpeed = 3;
     void Start()
     {
-        //_playerContr = FindObjectOfType<Playercontroller>();
     }
     public int ChangeSpeed(int combo)
     {
@@ -29,7 +28,7 @@ public class Rotate : MonoBehaviour
             _speedup.Play();
             return 35;
         }
-        return 20;
+        return 25;
     }
     public void Update()
     {
@@ -39,7 +38,7 @@ public class Rotate : MonoBehaviour
         gameObject.transform.Rotate(Vector3.up, 20);
         float horizon = -Input.GetAxis("Horizontal");
         Vector3 movement = new Vector3(horizon, 0, 0);
-        GetComponent<Rigidbody>().velocity = movement * 3;
+        GetComponent<Rigidbody>().velocity = movement * 2.5f;
         //}
     }
 }
