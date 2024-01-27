@@ -22,7 +22,7 @@ public class ZombiController : MonoBehaviour
         float ramdom = UnityEngine.Random.Range(0, 8);
         if (ramdom < 3) SpownZombi(_spownpos);
         else if (ramdom < 9) SpownZombi(_spownpos2);
-        //else SpownZombi(_spownpos3);
+        else SpownZombi(_spownpos3);
     }
     void SpownZombi(Vector3 _pos)
     {

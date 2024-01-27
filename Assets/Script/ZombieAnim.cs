@@ -27,8 +27,12 @@ public class ZombieAnim : MonoBehaviour
     {
         _rb.AddForce(Vector3.fwd * _speed);
     }
+    
     private void OnTriggerEnter(Collider other)
     {
+        if (other.gameObject.CompareTag("Destroy"))
+            Destroy(gameObject);
+
         if (other.gameObject.CompareTag("Player"))
         {
             //particleClone = Instantiate(m_ParticleSystem,
