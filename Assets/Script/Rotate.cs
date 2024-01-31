@@ -28,14 +28,14 @@ public class Rotate : MonoBehaviour
             _speedup.Play();
             return 35;
         }
-        return 25;
+        return 5;
     }
     public void Update()
     {
         //if (_playerContr != null)
         //{
         //Debug.Log(_playerContr._combo);
-        gameObject.transform.Rotate(Vector3.up, 20);
+        gameObject.transform.Rotate(Vector3.up, 5);
         float horizon = -Input.GetAxis("Horizontal");
         Vector3 movement = new Vector3(horizon, 0, 0);
         GetComponent<Rigidbody>().velocity = movement * 2.5f;

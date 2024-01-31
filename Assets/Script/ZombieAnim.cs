@@ -7,7 +7,7 @@ using static UnityEngine.ParticleSystem;
 
 public class ZombieAnim : MonoBehaviour
 {
-    private float _speed = 650f;
+    private float _speed = 350;
     public float _destroytime;
     [SerializeField] ParticleSystem m_ParticleSystem;
     Animator _anim;

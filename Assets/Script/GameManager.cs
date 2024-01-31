@@ -9,6 +9,7 @@ using static GameManager;
 
 public class GameManager : MonoBehaviour
 {
+    bool _activebutton = false;
     bool _gamestart = false;
     float _waitTime = 1.0f;
     float _gameTime = 60;
@@ -21,6 +22,7 @@ public class GameManager : MonoBehaviour
     /// <summary>フェードアウト用の画像</summary>
     [SerializeField] Image _fadeimage;
     public static GameManager _instance;
+    int _newScore = 0;
     private void Awake()
     {
         _gamestart = true;
@@ -30,12 +32,18 @@ public class GameManager : MonoBehaviour
             DontDestroyOnLoad(gameObject);
         }
         else
-        {
             Destroy(gameObject);
-        }
     }
+    private void Start()
+    {
+        //  _scaleBT.onClick.AddListener();
+    }
+
+
     void Update()
     {
+
+        
         if (_currentTime <= _gameTime) _currentTime += Time.deltaTime;
         _timerTxt.text = string.Format("{0:0}", (int)_currentTime + "秒経過...");
         float _offsetY = Time.time * _scrollspeed;
@@ -58,3 +66,4 @@ public class GameManager : MonoBehaviour
         _fadeimage.enabled = false;
     }
 }
+
