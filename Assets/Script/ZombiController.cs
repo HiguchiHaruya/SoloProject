@@ -7,30 +7,58 @@ using UnityEngine.Events;
 public class ZombiController : MonoBehaviour
 {
     [SerializeField] GameObject _zombiPrefab;
-    [SerializeField] Vector3 _spownpos;
-    [SerializeField] Vector3 _spownpos2;
-    [SerializeField] Vector3 _spownpos3;
-    bool _spown = false;
-    void Start()
+    List<GameObject> _zombiePool;
+    private int _poolsize = 10; //ゾンビプールの初期のデカさ
+    private float interval = 1f; //ゾンビの出現間隔
+    public static ZombiController Instance { get; private set; }
+
+    private void Awake()
     {
-        InvokeRepeating("Call", 0.5f, 1f);
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else { Destroy(gameObject); }
+
+        _zombiePool = new List<GameObject>();
+        for (int i = 0; i < _poolsize; i++)
+        {
+            GameObject zombie = Instantiate(_zombiPrefab);
+            zombie.SetActive(false);
+            _zombiePool.Add(zombie);
+            StartCoroutine(GenerateZombie());
+        }
     }
 
-    [Obsolete]
-    void Call()
+    IEnumerator GenerateZombie()
     {
-        float ramdom = UnityEngine.Random.Range(0, 8);
-        if (ramdom < 3) SpownZombi(_spownpos);
-        else if (ramdom < 9) SpownZombi(_spownpos2);
-        else SpownZombi(_spownpos3);
-    }
-    void SpownZombi(Vector3 _pos)
-    {
-        if (!_spown)
+        while (!GameManager.Instance.IsEnd)
         {
-            GameObject _zombiclone =
-                Instantiate(_zombiPrefab, _pos, Quaternion.identity);//引数で貰ったVector3座標にスポーン。回転は無し。
-            _spown = true;
+            Vector3 pos = new Vector3
+                ((UnityEngine.Random.Range(8, -8)), 0.5f,UnityEngine.Random.Range(-25f,-40) );
+            GameObject zombie = GetZombie();
+            zombie.transform.position = pos;
+            yield return new WaitForSeconds(interval);
         }
+    }
+    private GameObject GetZombie()
+    {
+        foreach (GameObject zombie in _zombiePool)
+        {
+            if (!zombie.activeInHierarchy)
+            {
+                zombie.SetActive(true);
+                return zombie;
+            }
+        }
+        GameObject newZombie = Instantiate(_zombiPrefab); //プール拡張
+        _zombiePool.Add(newZombie);
+        newZombie.SetActive(true);
+        return newZombie;
+    }
+    public void ReturnZombie(GameObject zombie)
+    {
+        zombie.SetActive(false);
     }
 }

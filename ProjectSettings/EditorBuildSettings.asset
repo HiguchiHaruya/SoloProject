@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/sousa.unity
     guid: 9e9be279a33e079429adca7c8db14803
+  - enabled: 1
+    path: Assets/Scenes/Result.unity
+    guid: 4016e17d4f55c1e49a6890586cdf232a
   m_configObjects: {}

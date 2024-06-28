@@ -1,69 +1,41 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-using static GameManager;
 
 public class GameManager : MonoBehaviour
 {
-    bool _activebutton = false;
-    bool _gamestart = false;
-    float _waitTime = 1.0f;
-    float _gameTime = 60;
-    float _currentTime = 0;
+    private float _gameTime = 45;
+    private float _currentTime = 0;
+    private bool _isEnd = false;
+    private float _offsetY = 0;
     [SerializeField] Text _timerTxt;
-    /// <summary> 床のスクロールスピード</summary>
     [SerializeField] float _scrollspeed = 5f;
-    /// <summary>床のレンダラー</summary>
     [SerializeField] Renderer _rend;
-    /// <summary>フェードアウト用の画像</summary>
     [SerializeField] Image _fadeimage;
-    public static GameManager _instance;
-    int _newScore = 0;
+
+    public float GameTime => _gameTime;
+    public float CurrentTime => _currentTime;
+    public bool IsEnd => _isEnd;
+
+    public static GameManager Instance { get; private set; }
     private void Awake()
     {
-        _gamestart = true;
-        if (_instance == null)
+        if (Instance == null)
         {
-            _instance = this;
+            Instance = this;
             DontDestroyOnLoad(gameObject);
         }
-        else
-            Destroy(gameObject);
+        else { Destroy(gameObject); }
     }
-    private void Start()
-    {
-        //  _scaleBT.onClick.AddListener();
-    }
-
 
     void Update()
     {
-
-        
-        if (_currentTime <= _gameTime) _currentTime += Time.deltaTime;
-        _timerTxt.text = string.Format("{0:0}", (int)_currentTime + "秒経過...");
-        float _offsetY = Time.time * _scrollspeed;
-        _rend.material.SetTextureOffset("_MainTex", new Vector2(0, _offsetY));
-        if (_currentTime >= _gameTime) StartCoroutine(Load());
-    }
-    IEnumerator Load()
-    {
-        Debug.Log("到達");
-        float fadeDuration = 3.0f;
-        float timer = 0;
-        while (timer < fadeDuration)
-        {
-            float alpha = Mathf.Lerp(0, 1, timer / fadeDuration);
-            _fadeimage.color = new Color(0, 0, 0, alpha);
-            timer += Time.deltaTime;
-            yield return null;
-        }
-        //SceneManager.LoadScene("");
-        _fadeimage.enabled = false;
+        if (_currentTime <= _gameTime) { _currentTime += Time.deltaTime; }
+        UIManager.Instance.GetTimeText();
+        UIManager.Instance.GetComboText();
+        _offsetY = Time.time * _scrollspeed;
+        if (_rend != null) { _rend.material.SetTextureOffset("_MainTex", new Vector2(0, _offsetY)); }
+        if (_currentTime >= _gameTime) { _isEnd = true; }
     }
 }
-

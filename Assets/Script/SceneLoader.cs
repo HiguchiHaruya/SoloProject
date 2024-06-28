@@ -4,24 +4,33 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using Unity.VisualScripting;
 
 public class SceneLoader : MonoBehaviour
 {
     public string SceneName;
     [SerializeField] Image _fadeimage;
-    Button _bt;
-    private void Start()
+    public static SceneLoader Instance;
+
+    private void Awake()
     {
-        _bt = GetComponent<Button>();
-        _bt.onClick.AddListener(Call);
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else { Destroy(gameObject); }
     }
-    void Call()
+    public void Start()
+    {
+
+    }
+    public void GetLoadScene(string SceneName)
     {
         StartCoroutine(SceneLoad(SceneName));
     }
-    IEnumerator SceneLoad(string name)
+    public IEnumerator SceneLoad(string SceneName)
     {
-        float fadeDuration = 3.0f;
+        float fadeDuration = 1.5f;
         float timer = 0;
         while (timer < fadeDuration)
         {
@@ -30,6 +39,6 @@ public class SceneLoader : MonoBehaviour
             timer += Time.deltaTime;
             yield return null;
         }
-        SceneManager.LoadScene(name);
+        SceneManager.LoadScene(SceneName);
     }
 }
