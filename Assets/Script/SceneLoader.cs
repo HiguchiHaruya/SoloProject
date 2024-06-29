@@ -8,8 +8,8 @@ using Unity.VisualScripting;
 
 public class SceneLoader : MonoBehaviour
 {
-    public string SceneName;
-    [SerializeField] Image _fadeimage;
+    public string SceneName; //移行先のシーン名
+    [SerializeField] Image _fadeimage; //フェードアウト用のImage
     public static SceneLoader Instance;
 
     private void Awake()
@@ -20,11 +20,7 @@ public class SceneLoader : MonoBehaviour
         }
         else { Destroy(gameObject); }
     }
-    public void Start()
-    {
-
-    }
-    public void GetLoadScene(string SceneName)
+    public void GetLoadScene(string SceneName) //他のクラスが参照するメソッド
     {
         StartCoroutine(SceneLoad(SceneName));
     }
