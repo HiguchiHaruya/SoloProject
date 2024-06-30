@@ -36,7 +36,7 @@ public class ZombiController : MonoBehaviour
         while (!GameManager.Instance.IsEnd)
         {
             Vector3 pos = new Vector3
-                ((UnityEngine.Random.Range(8, -8)), 0.5f,UnityEngine.Random.Range(-25f,-40) );
+                ((UnityEngine.Random.Range(8, -8)), 0.5f,UnityEngine.Random.Range(-30f,-45) );
             GameObject zombie = GetZombie();
             zombie.transform.position = pos;
             yield return new WaitForSeconds(interval);

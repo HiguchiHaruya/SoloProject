@@ -4,7 +4,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
-    private float _currentTime = 60;
+    private float _currentTime = 40;
     private bool _isEnd = false;
     private float _offsetY = 0;
     [SerializeField] float _scrollspeed = 5f;
@@ -26,17 +26,27 @@ public class GameManager : MonoBehaviour
     }
     void Update()
     {
-        if (_currentTime >= 0) { _currentTime -= Time.deltaTime; }
-        if (_currentTime <= 0) //ゲーム終了時の処理
+        if (UIManager.Instance.IsStart)
         {
-            _isEnd = true;
-            AudioManager.Instance.StopBgm();
-            SceneLoader.Instance.GetLoadScene("Result"); 
-            Destroy(this);
+            if (_currentTime >= 0) { _currentTime -= Time.deltaTime; }
+            if (_currentTime <= 0) //ゲーム終了時の処理
+            {
+                _isEnd = true;
+                AudioManager.Instance.StopBgm();
+                SaveFinalScore();
+                SceneLoader.Instance.GetLoadScene("Result");
+                Destroy(this);
+            }
+            UIManager.Instance.GetTimeText(); //時間とスコアのテキストを表示
+            UIManager.Instance.GetComboText();
+            _offsetY = Time.time * _scrollspeed;
+            if (_rend != null) { _rend.material.SetTextureOffset("_MainTex", new Vector2(0, _offsetY)); } //床のマテリアルを動かす
         }
-        UIManager.Instance.GetTimeText(); //時間とスコアのテキストを表示
-        UIManager.Instance.GetComboText();
-        _offsetY = Time.time * _scrollspeed;
-        if (_rend != null) { _rend.material.SetTextureOffset("_MainTex", new Vector2(0, _offsetY)); } //床のマテリアルを動かす
+    }
+
+    private static void SaveFinalScore()
+    {
+        PlayerPrefs.SetInt("FinalScore", Playercontroller.Instance.Score);
+        PlayerPrefs.Save();
     }
 }

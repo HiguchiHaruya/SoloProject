@@ -7,8 +7,11 @@ public class Fence : MonoBehaviour
 
     void Update()
     {
-        // ©“®‚Å¶‰E‚ÉˆÚ“®‚Å‚«‚é‚â‚Â
-        float horizontalMovement = Mathf.Sin(Time.time * 45) * distance;
-        transform.position = new Vector3(transform.position.x, transform.position.y, horizontalMovement);
+        if (UIManager.Instance.IsStart)
+        {
+            // ©“®‚Å¶‰E‚ÉˆÚ“®‚Å‚«‚é‚â‚Â
+            float horizontalMovement = Mathf.Sin(Time.time * 45) * distance;
+            transform.position = new Vector3(transform.position.x, transform.position.y, horizontalMovement);
+        }
     }
 }

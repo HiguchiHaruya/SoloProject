@@ -28,7 +28,7 @@ public class ZombieAnim : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        _rb.velocity = new Vector3(0, 0, 1 * _speed);
+        if (UIManager.Instance.IsStart) { _rb.velocity = new Vector3(0, 0, 1 * _speed); }
     }
 
     private void OnTriggerEnter(Collider other)
