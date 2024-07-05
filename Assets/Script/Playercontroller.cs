@@ -39,7 +39,6 @@ public class Playercontroller : MonoBehaviour
     }
     private void Update()
     {
-        Debug.Log(Limit);
         if (currentscore >= 100 && !_isBig)
         {
             this.transform.DOScale(new Vector3(1f, 1f, 1f), 3f);

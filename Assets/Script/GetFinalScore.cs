@@ -14,9 +14,6 @@ public class GetFinalScore : MonoBehaviour
 
     public void GameEnd()
     {
-#if UNITY_EDITOR
-        UnityEditor.EditorApplication.isPlaying = false; // エディタ上で実行停止
-        Application.Quit();
-#endif
+        SceneLoader.Instance.GetLoadScene("StartScene");
     }
 }

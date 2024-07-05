@@ -46,13 +46,13 @@ public class ZombieAnim : MonoBehaviour
         Vector3 dir = (-transform.forward + transform.up).normalized; //‚Á”ò‚Ñ‚Ì•ûŒü
         Vector3 endPos = transform.position + dir * force; //‚Á”ò‚Ñ‚ÌÅI’n“_
         _anim.SetTrigger("Down");
-        transform.DOMove(endPos, duration) //‚Á”ò‚Ñ‚ğİ’è
-            .SetEase(Ease.OutQuad);
+        transform
+            .DOMove(endPos, duration)
+            .SetEase(Ease.OutQuad); //‚Á”ò‚Ñ‚ğİ’è
 
-        transform.DORotate( //‰ñ“]‚ğİ’è
-            new Vector3(0, 0, rotationAmount), duration, RotateMode.FastBeyond360)
-            .SetEase(Ease.OutQuad);
-
+        transform
+            .DORotate(new Vector3(0, 0, rotationAmount), duration, RotateMode.FastBeyond360)
+            .SetEase(Ease.OutQuad); //‰ñ“]‚ğİ’è
         yield return new WaitForSeconds(1.5f);
         ZombiController.Instance.ReturnZombie(gameObject);
     }

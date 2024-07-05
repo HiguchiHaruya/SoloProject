@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -14,13 +15,13 @@ public class ZombiController : MonoBehaviour
 
     private void Awake()
     {
+        _poolsize = 10;
         if (Instance == null)
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
         }
         else { Destroy(gameObject); }
-
         _zombiePool = new List<GameObject>();
         for (int i = 0; i < _poolsize; i++)
         {
@@ -30,13 +31,12 @@ public class ZombiController : MonoBehaviour
             StartCoroutine(GenerateZombie());
         }
     }
-
     IEnumerator GenerateZombie()
     {
         while (!GameManager.Instance.IsEnd)
         {
             Vector3 pos = new Vector3
-                ((UnityEngine.Random.Range(8, -8)), 0.5f,UnityEngine.Random.Range(-30f,-45) );
+                ((UnityEngine.Random.Range(8, -8)), 0.5f, UnityEngine.Random.Range(-30f, -45));
             GameObject zombie = GetZombie();
             zombie.transform.position = pos;
             yield return new WaitForSeconds(interval);

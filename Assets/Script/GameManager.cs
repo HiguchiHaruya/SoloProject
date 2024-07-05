@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
+            _isEnd = false;
         }
         else { Destroy(gameObject); }
         AudioManager.Instance.PlayBgm(0); //ノーマルBGMを再生
@@ -36,6 +37,7 @@ public class GameManager : MonoBehaviour
                 SaveFinalScore();
                 SceneLoader.Instance.GetLoadScene("Result");
                 Destroy(this);
+                Destroy(ZombiController.Instance);
             }
             UIManager.Instance.GetTimeText(); //時間とスコアのテキストを表示
             UIManager.Instance.GetComboText();
